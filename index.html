@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase</title>
+ 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD7Ajbme0XurrkedaW6-yD7eZhDeqVyEJQ",
+    authDomain: "test-app-ac929.firebaseapp.com",
+    databaseURL: "https://test-app-ac929.firebaseio.com",
+    projectId: "test-app-ac929",
+    storageBucket: "test-app-ac929.appspot.com",
+    messagingSenderId: "652583680607",
+    appId: "1:652583680607:web:c0bf14dd72e79139daf9ea",
+    measurementId: "G-9Y1H4S2W61"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+</script>
+
+</head>
+<body>
+    
+    <h1>Firebase App</h1>
+    <h3>Email:  <input id="email"/> </h3>
+    <h3>Password: <input type="password" id="password"/> </h3>
+    <button onclick="signin()">Sign In</button> <br />
+    <button onclick="signup()">Sign Up</button> <br />
+
+    <script src="./index.js"> </script>
+</body>
+</html>
