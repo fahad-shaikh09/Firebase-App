@@ -1,15 +1,38 @@
-console.log(firebase)
+// console.log("Firestore",firebase.firestore)
+// console.log("Auth",firebase.auth)
+
 
 function signup() {
    let email=document.getElementById("email").value;
    let password=document.getElementById("password").value;
+   let fullname=document.getElementById("fullname").value;
+   let age=document.getElementById("age").value;
+
     console.log("id:", email)
     console.log("password:", password)
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(function(){
-        alert("Successfully signed Up")
+    .then(function(response){
+        console.log("Newly created User", response)
+        const userID = response.user.uid;
+
+        /*
+            1) .add({}) (generates unique ID for the document)
+            2) .doc(<id>).set({}) (you tell the ID to firebase)
+        */
+            
+        // firebase.firestore().collection('users').add({
+        firebase.firestore().collection('users').doc(userID).set({
+            fullname,
+            age,
+            email,
+        })
         // location.href = "./index.html"
+        
+    }).then(function(){
+        alert(".then func: Successfully signed Up")        
+    }).catch(function(){
+        alert("Sign Up Failed")        
 
     })
     
@@ -24,12 +47,17 @@ function signup() {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 function signin() {
-    let email=document.getElementById("email").value;
-    let  password=document.getElementById("password").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
      console.log("emial", email)
      console.log("password", password)
-     firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
-         console.log("Successfully loged in")
+
+     firebase.auth().signInWithEmailAndPassword(email, password)
+     .then(function(responseFromApi){
+        //  alert("Successfully loged in");
+         console.log("Response: ", responseFromApi);
+         let userID = responseFromApi.user.uid;
+         localStorage.setItem("userID", userID)
          location.href = "./dashboard.html"
      }).catch(function(error) {
         // Handle Errors here.

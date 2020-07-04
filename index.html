@@ -8,6 +8,7 @@
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -30,16 +31,19 @@
   firebase.analytics();
 
 </script>
+<script src="./index.js"> </script>
 
 </head>
 <body>
     
     <h1>Firebase App</h1>
-    <h3>Email:  <input id="email"/> </h3>
+    <h3>Email:  <input type="email" id="email"/> </h3>
     <h3>Password: <input type="password" id="password"/> </h3>
+    <h3>Enter Age <input type="number" id="age"  /> </h3>
+    <h3>Enter Full name <input type="text" id="fullname"  /> </h3>
+
     <button onclick="signin()">Sign In</button> <br />
     <button onclick="signup()">Sign Up</button> <br />
 
-    <script src="./index.js"> </script>
 </body>
 </html>

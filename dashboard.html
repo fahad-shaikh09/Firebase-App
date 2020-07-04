@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script> -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD7Ajbme0XurrkedaW6-yD7eZhDeqVyEJQ",
+    authDomain: "test-app-ac929.firebaseapp.com",
+    databaseURL: "https://test-app-ac929.firebaseio.com",
+    projectId: "test-app-ac929",
+    storageBucket: "test-app-ac929.appspot.com",
+    messagingSenderId: "652583680607",
+    appId: "1:652583680607:web:c0bf14dd72e79139daf9ea",
+    measurementId: "G-9Y1H4S2W61"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  // firebase.analytics();
+</script>
+
 </head>
 <body>
-    <h1>Welcome to Dashboard</h1>
+  <script src="./dashboard.js"> </script>
+  <h1>Welcome to Dashboard</h1>
+  <h3>Full name: <span id="fullname">  </span> </h3>
+  <h4>Age:       <span id="age">        </span> </h4>
+  <h4>Email:     <span id="email">     </span> </h4>
+
+
+
+
 </body>
 </html>
