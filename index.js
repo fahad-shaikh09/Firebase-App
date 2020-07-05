@@ -54,11 +54,11 @@ function signin() {
 
      firebase.auth().signInWithEmailAndPassword(email, password)
      .then(function(responseFromApi){
-        //  alert("Successfully loged in");
+        //  alert("Successfully logged in");
          console.log("Response: ", responseFromApi);
          let userID = responseFromApi.user.uid;
          localStorage.setItem("userID", userID)
-         location.href = "./dashboard.html"
+         location.replace("./transactions.html")
      }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
