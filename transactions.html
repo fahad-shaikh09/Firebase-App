@@ -59,7 +59,7 @@
         </div>
       </nav>
       
-    <form onsubmit="formSubmit(e)">
+    <form id="form" >
 
        <h5> Amount: </h5>
        <input type="number" required  id="amount" /> <br><br>
@@ -73,8 +73,8 @@
        <h5> Category:  </h5>
        <input type="text" required id="category" /> <br><br>
         
-        <button  onclick="addIncome()"> Add Income </button>  
-        <button  onclick="addExpense()"> Add Expense </button>
+        <input type="submit" id="addIncome"  value="Add Income" />    
+        <input type="submit" id="addExpense" value="Add Expense" /> 
     </form>
     <hr/>
 

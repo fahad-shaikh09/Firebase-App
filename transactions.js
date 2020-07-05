@@ -13,13 +13,12 @@ firebase.firestore().collection('users').doc(userID).get()
 .catch(function(error){
   console.log("Error", error.message)
 })
-}   
-
-function formSubmit(e){
-    e.preventDefault();
 }
 
-function addIncome(){
+document.getElementById("form").addEventListener("submit",addIncome)
+
+function addIncome(e){
+    e.preventDefault();
     console.log("addIncome is clicked")
     const userID = localStorage.getItem('userID');
     const amount = document.getElementById("amount").value;
@@ -34,11 +33,13 @@ function addIncome(){
     console.log("Category: ",  category)
 
     firebase.firestore().collection("transactions").add({
-        amount, date, description, category, userID, type:income,
-    }).then(function(){
+        amount, date, description, category, userID,
+    })
+    .then(function(){
         alert("Transaction is added in Firebase")
         clearForm();
-    }).catch(function(error){
+    })
+    .catch(function(error){
         alert("Transaction is failed with Error: ", error.message)
     })  
 }
