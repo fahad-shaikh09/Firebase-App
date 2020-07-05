@@ -6,3 +6,8 @@
 .welcome {
     color: white;
 }
+
+.caution {
+    color: red;
+    font-size: small;
+}
