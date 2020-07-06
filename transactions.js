@@ -84,3 +84,51 @@ function getTransactions() {
     })
 }
 
+function filterTransactions(){
+    clearDisplay();
+
+    console.log("Filter Transactions is clicked")
+    const type = document.getElementById("showIncomeExpense").value;
+    console.log("Type: ", type)
+
+    if(type == "all"){
+        return getTransactions();
+    }
+
+    const table = document.getElementById("transactionTable")
+
+
+    firebase.firestore().collection("transactions")
+    .where("category", "==", type)
+    .get()
+    .then(function(snaps){
+        snaps.forEach(function(doc){
+            // console.log("doc.data(): ", doc.data())
+            const data = doc.data()
+            const row = document.createElement('tr')
+            const amount = document.createElement('td')
+            const description = document.createElement('td')
+            const date = document.createElement('td')
+            const category = document.createElement('td')
+
+            amount.innerHTML = data.amount;
+            description.innerHTML = data.description;
+            date.innerHTML = data.date.toDate();
+            category.innerHTML = data.category;
+
+            row.appendChild(amount)
+            row.appendChild(description)
+            row.appendChild(date)
+            row.appendChild(category);
+
+            table.appendChild(row)
+
+        })
+    })
+}
+
+
+function clearDisplay(){
+  const table = document.getElementById("transactionTable")
+  console.log("table: ", table)
+}

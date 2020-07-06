@@ -49,6 +49,15 @@
             </li>
           </ul>
 
+            <div class="showIncomeExpense">
+                <select name="category" required id="showIncomeExpense" >
+                    <option value="all">  All Transactions </option>
+                    <option value="Income">  Income </option>
+                    <option value="Expense"> Expense </option>
+                </select>
+                <button type="button" class="btn btn-primary" onclick="filterTransactions()"> Filter</button>
+            </div>
+            
           <p class="welcome">Welcome <span id="name"> </span>  </p>
           <p>
             <a href="#" class="btn btn-info btn-sm">
@@ -61,7 +70,7 @@
       
     <form id="form" >
 
-       <h5> Amount: <span class="caution">Enter +ve amount for Income and -ve amount for Expense!</span></h5> 
+       <h5> Amount: <span class="caution"> <strong> Enter +ve amount for Income and -ve amount for Expense!</strong>     </span></h5> 
        <input type="number" required  id="amount" /> <br><br>
 
        <h5> Description: </h5>
@@ -70,8 +79,15 @@
        <h5> Date: </h5>
        <input type="date" required id="date" />  <br><br>
 
+       <!-- <h5> Category:  </h5> -->
+       <!-- <input type="text" required id="category" /> <br> -->
+
        <h5> Category:  </h5>
-       <input type="text" required id="category" /> <br>
+        <select name="category" required id="category">
+            <option value="">  ... </option>
+            <option value="Income">  Income </option>
+            <option value="Expense"> Expense </option>
+        </select> <br> <br>
         
         <input type="submit" id="addIncome"  value="Add Income/Expense" /> 
         <br>   
@@ -88,26 +104,6 @@
             <th scope="col">Category</th>
           </tr>
         </thead>
-        <!-- <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody> -->
       </table>
 
 <!-- BOOTSTRAP JS -->
