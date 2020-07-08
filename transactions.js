@@ -2,24 +2,24 @@ getUserData();
 
 function getUserData(){
 let userID = localStorage.getItem('userID')
-console.log("user ID from Transactions page: ", userID)
+// console.log("user ID from Transactions page: ", userID)
 
 firebase.firestore().collection('users').doc(userID).get()
 .then(function(snapshot){
     let userData = snapshot.data();
-    console.log("Snapshot: ", userData)
+    // console.log("Snapshot: ", userData)
   document.getElementById("name").innerText = userData.fullname;
 })
 .catch(function(error){
   console.log("Error", error.message)
 })
 }
+
 // ADD INCOME ON FIREBASE
 document.getElementById("form").addEventListener("submit",addIncome)
 
 function addIncome(e){
     e.preventDefault();
-    console.log("addIncome is clicked")
     const userID = localStorage.getItem('userID');
     const amount = document.getElementById("amount").value;
     const date = document.getElementById("date").valueAsDate;
@@ -38,11 +38,11 @@ function addIncome(e){
     .then(function(){
         alert("Transaction is added in Firebase");
         clearForm();
-        getTransactions();
+        displayTransactions();
     })
-    .catch(function(error){
-        alert("Transaction is failed with Error: ", error.message);
-    })  
+    // .catch(function(error){
+    //     alert("Transaction is failed with Error: ", error.message);
+    // })  
 }
 
 function clearForm(){
@@ -52,17 +52,21 @@ function clearForm(){
     document.getElementById("category") = ""
 }
 
- getTransactions();
+ displayTransactions();
 
-function getTransactions() {
-    const table = document.getElementById("transactionTable")
+function displayTransactions() {
+    // const table = document.getElementById("transactionTable")
+    const tableBody = document.getElementById("tbody")         ////
 
     firebase.firestore().collection("transactions").get()
     .then(function(snaps){
         snaps.forEach(function(doc){
             // console.log("doc.data(): ", doc.data())
             const data = doc.data()
+            // const tbody = document.createElement('tbody')         ////
             const row = document.createElement('tr')
+            // tbody.classList.add("dynamicRow")           /////
+
             const amount = document.createElement('td')
             const description = document.createElement('td')
             const date = document.createElement('td')
@@ -78,24 +82,31 @@ function getTransactions() {
             row.appendChild(date)
             row.appendChild(category);
 
-            table.appendChild(row)
+            // tbody.appendChild(row)   ////
+            tableBody.appendChild(row)
+            // table.appendChild(tbody)
+
 
         })
     })
 }
 
 function filterTransactions(){
-    clearDisplay();
-
+    // clearDisplay();
     console.log("Filter Transactions is clicked")
+    const initialTable = document.getElementById("tbody")
+    initialTable.innerHTML = ""
+
+
+
     const type = document.getElementById("showIncomeExpense").value;
     console.log("Type: ", type)
 
     if(type == "all"){
-        return getTransactions();
+        return displayTransactions();
     }
 
-    const table = document.getElementById("transactionTable")
+    // const table = document.getElementById("transactionTable")
 
 
     firebase.firestore().collection("transactions")
@@ -106,6 +117,8 @@ function filterTransactions(){
             // console.log("doc.data(): ", doc.data())
             const data = doc.data()
             const row = document.createElement('tr')
+            // row.classList.add("dynamicRow")           /////
+
             const amount = document.createElement('td')
             const description = document.createElement('td')
             const date = document.createElement('td')
@@ -121,14 +134,17 @@ function filterTransactions(){
             row.appendChild(date)
             row.appendChild(category);
 
-            table.appendChild(row)
+            // table.appendChild(row)
+            initialTable.appendChild(row)
 
         })
     })
 }
 
 
-function clearDisplay(){
-  const table = document.getElementById("transactionTable")
-  console.log("table: ", table)
-}
+// function clearDisplay(){
+// console.log("clearDisplay is clicked")
+// let row = document.getElementsByTagName("tbody")[0]
+// console.log("row: ", row)
+// row.innerHTML = ""
+// }
