@@ -55,9 +55,13 @@ function clearForm(){
  displayTransactions();
 
 function displayTransactions() {
+    let userID = localStorage.getItem('userID')
+    
     const tableBody = document.getElementById("tbody")         
 
-    firebase.firestore().collection("transactions").get()
+    firebase.firestore().collection("transactions")
+    .where("userID", "==", userID)
+    .get()
     .then(function(snaps){
         snaps.forEach(function(doc){
             // console.log("doc.data(): ", doc.data())
@@ -91,7 +95,7 @@ function filterTransactions(){
     const initialTable = document.getElementById("tbody")
     initialTable.innerHTML = ""
 
-
+    let userID = localStorage.getItem("userID")
 
     const type = document.getElementById("showIncomeExpense").value;
     console.log("Type: ", type)
@@ -102,6 +106,7 @@ function filterTransactions(){
 
     firebase.firestore().collection("transactions")
     .where("category", "==", type)
+    .where("userID", "==", userID)
     .get()
     .then(function(snaps){
         snaps.forEach(function(doc){
