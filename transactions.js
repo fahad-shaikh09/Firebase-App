@@ -55,17 +55,14 @@ function clearForm(){
  displayTransactions();
 
 function displayTransactions() {
-    // const table = document.getElementById("transactionTable")
-    const tableBody = document.getElementById("tbody")         ////
+    const tableBody = document.getElementById("tbody")         
 
     firebase.firestore().collection("transactions").get()
     .then(function(snaps){
         snaps.forEach(function(doc){
             // console.log("doc.data(): ", doc.data())
             const data = doc.data()
-            // const tbody = document.createElement('tbody')         ////
             const row = document.createElement('tr')
-            // tbody.classList.add("dynamicRow")           /////
 
             const amount = document.createElement('td')
             const description = document.createElement('td')
@@ -82,9 +79,7 @@ function displayTransactions() {
             row.appendChild(date)
             row.appendChild(category);
 
-            // tbody.appendChild(row)   ////
             tableBody.appendChild(row)
-            // table.appendChild(tbody)
 
 
         })
@@ -92,7 +87,6 @@ function displayTransactions() {
 }
 
 function filterTransactions(){
-    // clearDisplay();
     console.log("Filter Transactions is clicked")
     const initialTable = document.getElementById("tbody")
     initialTable.innerHTML = ""
@@ -106,9 +100,6 @@ function filterTransactions(){
         return displayTransactions();
     }
 
-    // const table = document.getElementById("transactionTable")
-
-
     firebase.firestore().collection("transactions")
     .where("category", "==", type)
     .get()
@@ -117,7 +108,6 @@ function filterTransactions(){
             // console.log("doc.data(): ", doc.data())
             const data = doc.data()
             const row = document.createElement('tr')
-            // row.classList.add("dynamicRow")           /////
 
             const amount = document.createElement('td')
             const description = document.createElement('td')
@@ -134,7 +124,6 @@ function filterTransactions(){
             row.appendChild(date)
             row.appendChild(category);
 
-            // table.appendChild(row)
             initialTable.appendChild(row)
 
         })
@@ -142,9 +131,3 @@ function filterTransactions(){
 }
 
 
-// function clearDisplay(){
-// console.log("clearDisplay is clicked")
-// let row = document.getElementsByTagName("tbody")[0]
-// console.log("row: ", row)
-// row.innerHTML = ""
-// }
