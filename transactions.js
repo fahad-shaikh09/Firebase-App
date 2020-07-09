@@ -136,3 +136,7 @@ function filterTransactions(){
 }
 
 
+function logout(){
+    location.replace("./index.html")
+    localStorage.clear();
+}

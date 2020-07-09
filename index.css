@@ -3,3 +3,14 @@
     margin-top: 0 auto;
 }
 
+.logo {
+    color: white;
+    margin-left: -700px;
+    padding-top: 10px;
+    font-size: 25px;
+}
+
+.expense{
+    margin-left: 500px;
+    font-size: 25px;
+}
