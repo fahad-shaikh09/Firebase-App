@@ -4,13 +4,18 @@
 }
 
 .logo {
-    color: white;
-    margin-left: -700px;
-    padding-top: 10px;
-    font-size: 25px;
+    height: 100px;
+    width: 150px;
+    position: absolute;
+    top: 0;
+    left: 5px;
 }
 
 .expense{
     margin-left: 500px;
     font-size: 25px;
 }
+
+#customColor{
+    background-color: #737980
+    }

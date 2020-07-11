@@ -1,0 +1,33 @@
+.logo {
+        height: 100px;
+        width: 150px;
+        position: absolute;
+        top: 0;
+        left: 5px;
+    }
+
+#customColor{
+    background-color: #737980
+}
+
+.welcome{
+    margin-right: 100px;
+    color: white;
+}
+
+#dashboard {
+    margin: 0 auto;
+    border: 2px solid red;
+}
+#container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#transactions {
+    margin-left: 200px;
+}
+#transactions:hover {
+    color: red;
+    font-size: 25px;
+}

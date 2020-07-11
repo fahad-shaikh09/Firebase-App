@@ -7,6 +7,11 @@
     color: white;
 }
 
+#customColor{
+background-color: #737980
+}
+
+
 .caution {
     color: red;
     font-size: small;
@@ -20,4 +25,20 @@
 }
 .showIncomeExpense{
     margin-right: 400px;
+}
+#summary{
+    padding-left: 200px;
+}
+
+#summary:hover {
+    color: red;
+    font-size: 25px;   
+}
+
+.logo {
+    height: 100px;
+    width: 150px;
+    position: absolute;
+    top: 0;
+    left: 5px;
 }
