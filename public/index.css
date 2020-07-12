@@ -18,4 +18,10 @@
 
 #customColor{
     background-color: #737980
-    }
+}
+
+.form {
+    width: 600px;
+    margin-left: 400px;
+
+}
