@@ -16,9 +16,9 @@ firebase.firestore().collection('users').doc(userID).get()
 }
 
 // ADD INCOME OR EXPENSE IN FIREBASE
-document.getElementById("form").addEventListener("submit",addIncome)
+document.getElementById("form").addEventListener("submit",addIncomeOrExpense)
 
-function addIncome(e){
+function addIncomeOrExpense(e){
     e.preventDefault();
     const userID = localStorage.getItem('userID');
     const amount = document.getElementById("amount").value;
