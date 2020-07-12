@@ -137,16 +137,19 @@ function filterTransactions(){
             const description = document.createElement('td')
             const date = document.createElement('td')
             const category = document.createElement('td')
+            const image = document.createElement('td')
 
             amount.innerHTML = data.amount;
             description.innerHTML = data.description;
             date.innerHTML = data.date.toDate();
             category.innerHTML = data.category;
+            image.innerHTML = `<img src="${data.url}" width="100"/>`
 
             row.appendChild(amount)
             row.appendChild(description)
             row.appendChild(date)
             row.appendChild(category);
+            row.appendChild(image);
 
             initialTable.appendChild(row)
 
