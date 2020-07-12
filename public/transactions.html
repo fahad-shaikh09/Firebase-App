@@ -9,6 +9,8 @@
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-storage.js"></script>
+
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -80,9 +82,6 @@
        <h5> Date: </h5>
        <input type="date" required id="date" />  <br><br>
 
-       <!-- <h5> Category:  </h5> -->
-       <!-- <input type="text" required id="category" /> <br> -->
-
        <h5> Category:  </h5>
         <select name="category" required id="category">
             <option value="all">  ... </option>
@@ -90,12 +89,17 @@
             <option value="Expense"> Expense </option>
         </select> <br> <br>
         
+        <h5>File to upload:</h5> 
+        <input type="file" id="file">
+        <br>
+        <br>
+
         <input type="submit" id="addIncome"  value="Add Income/Expense" /> 
         <br>   
         <br>   
     </form>
 
-    <!-- TABLE -->
+    <!-- TABLE TO SHOW DATA-->
     <table class="table table-dark" id="transactionTable" >
         <thead>
           <tr>
@@ -103,6 +107,7 @@
             <th scope="col">Description</th>
             <th scope="col">Date</th>
             <th scope="col">Category</th>
+            <th scope="col">Image</th>
           </tr>
         </thead>
         <tbody id="tbody"></tbody>

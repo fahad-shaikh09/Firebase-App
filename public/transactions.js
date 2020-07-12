@@ -15,7 +15,7 @@ firebase.firestore().collection('users').doc(userID).get()
 })
 }
 
-// ADD INCOME ON FIREBASE
+// ADD INCOME OR EXPENSE IN FIREBASE
 document.getElementById("form").addEventListener("submit",addIncome)
 
 function addIncome(e){
@@ -25,21 +25,37 @@ function addIncome(e){
     const date = document.getElementById("date").valueAsDate;
     const description = document.getElementById("description").value;
     const category = document.getElementById("category").value;
-
-    console.log("userID: ",  userID)
-    console.log("Amount: ",  amount)
-    console.log("Date: ",  date) 
-    console.log("Desc: ",  description)
-    console.log("Category: ",  category)
-
-    firebase.firestore().collection("transactions").add({
-        amount, date, description, category, userID,
+    const file = document.getElementById("file").files[0]
+    const storageRef = firebase.storage().ref(`expense ${new Date}`);
+    storageRef.put(file).then(function(response){
+        console.log("response: ", response)
+        response.ref.getDownloadURL().then(function(url){
+            console.log("URL: ", url)
+            firebase.firestore().collection("transactions").add({
+            amount, date, description, category, userID, url: url
     })
     .then(function(){
         alert("Transaction is added in Firebase");
         clearForm();
         displayTransactions();
     })
+        })
+
+    }).catch(function(error){
+        console.log("error: ", error.message)
+    })
+
+
+    console.log("userID: ",  userID)
+    console.log("Amount: ",  amount)
+    console.log("Date: ",  date) 
+    console.log("Desc: ",  description)
+    console.log("Category: ",  category)
+    console.log("File: ", file)
+
+    
+
+
     // .catch(function(error){
     //     alert("Transaction is failed with Error: ", error.message);
     // })  
@@ -64,7 +80,7 @@ function displayTransactions() {
     .get()
     .then(function(snaps){
         snaps.forEach(function(doc){
-            // console.log("doc.data(): ", doc.data())
+            console.log("doc.data(): ", doc.data())
             const data = doc.data()
             const row = document.createElement('tr')
 
@@ -72,16 +88,19 @@ function displayTransactions() {
             const description = document.createElement('td')
             const date = document.createElement('td')
             const category = document.createElement('td')
+            const image = document.createElement('td')
 
             amount.innerHTML = data.amount;
             description.innerHTML = data.description;
             date.innerHTML = data.date.toDate();
             category.innerHTML = data.category;
+            image.innerHTML = `<img src="${data.url}" width="100"/>`
 
             row.appendChild(amount)
             row.appendChild(description)
             row.appendChild(date)
             row.appendChild(category);
+            row.appendChild(image);
 
             tableBody.appendChild(row)
 
