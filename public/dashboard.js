@@ -7,7 +7,9 @@ function getUserData() {
   firebase.firestore().collection('users').doc(userID).get()
     .then(function (snapshot) {
       console.log("Snapshot: ", snapshot.data())
+      
       let userData = snapshot.data();
+      document.getElementById("name").innerText = userData.fullname;
       // document.getElementById("name").innerText = userData.fullname;
       // document.getElementById("email").innerText = userData.email;
       // document.getElementById("fullname").innerText = userData.fullname;
@@ -125,70 +127,6 @@ function logout() {
   location.replace("index.html")
   localStorage.clear();
 }
-
-
-
-/////////////////////CHART JS//////////////////////////////////////////////////////////
-// --------------INCOME-------------------------
-
-// var incomeChart = document.getElementById('incomeChart').getContext('2d');
-// var myChart = new Chart(incomeChart, {
-//     type: 'bar',
-//     data: {
-//         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-//         datasets: [{
-//             label: 'Income',
-//             data: [2000, 4000, 600, 8000, 100, 1200, 400, 1600, 800, 200, 2200, 400 ],
-//             backgroundColor: [
-//                 'green','green','green','green','green','green','green','green','green','green','green','green',
-//             ],
-//             // borderColor: [
-//             //   'black','black','black','black','black','black','black','black','black','black','black','black',
-//             // ],
-//             borderWidth: 1
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         }
-//     }
-// });
-
-
-// --------------EXPENSE-------------------------
-
-// var expenseChart = document.getElementById('expenseChart').getContext('2d');
-// var myChart = new Chart(expenseChart, {
-//     type: 'bar',
-//     data: {
-//         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-//         datasets: [{
-//             label: 'Expense',
-//             data: [200, 4000, 600, 600, 1000, 1200, 400, 1600, 800, 200, 2200, 400 ],
-//             backgroundColor: [
-//                 'red','red','red','red','red','red','red','red','red','red','red','red',
-//             ],
-//             // borderColor: [
-//             //   'black','black','black','black','black','black','black','black','black','black','black','black',
-//             // ],
-//             borderWidth: 1
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         }
-//     }
-// });
 
 
 

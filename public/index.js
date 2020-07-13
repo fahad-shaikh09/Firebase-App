@@ -30,7 +30,7 @@ function signup() {
         // location.href = "./index.html"
         
     }).then(function(){
-        alert(".then func: Successfully signed Up")        
+        alert("Successfully signed Up")        
     }).catch(function(){
         alert("Sign Up Failed")        
 

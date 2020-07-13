@@ -25,6 +25,11 @@ function addIncomeOrExpense(e){
     const date = document.getElementById("date").valueAsDate;
     const description = document.getElementById("description").value;
     const category = document.getElementById("category").value;
+    // if(category == "Expense" && amount > 0){
+    //     alert('Enter Expense as -ve Value')
+    //     break;
+    // }
+
     const file = document.getElementById("file").files[0]
     const storageRef = firebase.storage().ref(`expense ${new Date}`);
     storageRef.put(file).then(function(response){
@@ -41,9 +46,10 @@ function addIncomeOrExpense(e){
     })
         })
 
-    }).catch(function(error){
-        console.log("error: ", error.message)
     })
+    // .catch(function(error){
+    //     console.log("error: ", error.message)
+    // })
 
 
     console.log("userID: ",  userID)
